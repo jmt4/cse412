@@ -1,0 +1,239 @@
+@client(clientID/char,firstName/char,lastName/char,phone/char,address/char):clientID
+'Client1','James','Smith','480-732-1234','Los Angeles'
+'Client2','Alen','Black','480-123-3456','New York'
+'Client3','John','Collins','480-123-8588','Los Angeles'
+'Client4','Tom','Wang','480-543-4323','Los Angeles'
+'Client5','Mallisa','Johns','480-123-8588','Detroit'
+'Client6','Carl','Braxton','480-566-1289','Detroit'
+'Client7','Tim','Williams','480-500-3400','Phoenix'
+'Client8','Lily','Franklin','480-772-8888','Detroit'
+'Client9','Mary','Davis','480-634-1245','Phoenix'
+
+@artist(artistID/char,firstName/char,lastName/char,yearBorn/numeric):artistID
+'A1','Bjorn','Friedman',1945
+'A2','Heidi','Helmut',1945
+'A3','John','Stark',1971
+'A4','Michael','Agnelo',1975
+'A5','Michelle','Agnelo',1975
+'A6','Francis','McDermott',1960
+'A7','Steve','Nash',1965
+'A8','Lisa','Raymond',1973
+'A9','Janet','Brown',1972
+'A10','Henry','Brown',1970
+'A11','Keith','Urban',1970
+'A12','John','Hopkins',1960
+
+@musicalGroup(groupCode/char,groupName/char):groupCode
+'G1','Deutsch Moss'
+'G2','Sweet Symphony'
+'G3','Thundering Typhoons'
+'G4','Great Snakes'
+'G5','Keith Urban'
+'G6','Beyond'
+
+@member(artistID/char,groupCode/char,fromDate/numeric,toDate/numeric):artistID, groupCode, fromDate
+'A1','G1',1970,1990
+'A1','G2',1991,2006
+'A2','G1',1970,1990
+'A2','G1',1992,2006
+'A3','G1',1971,2006
+'A4','G2',1995,2006
+'A4','G5',1997,2006
+'A5','G2',1995,2006
+'A6','G3',1985,2006
+'A7','G3',1985,1999
+'A7','G3',2000,2006
+'A8','G4',1985,2006
+'A8','G1',1991,2006
+'A9','G4',1990,2003
+'A9','G1',1980,2006
+'A9','G2',1998,2006
+'A10','G4',1990,2006
+'A10','G6',1998,2006
+'A11','G5',1980,2006
+
+@cd(cdCode/char,cdTitle/char,year/numeric,numberSold/numeric,groupCode/char):cdCode
+'C1','Goodnight',2001,500000,'G1'
+'C2','Sweet Dreams',1990,100000,'G2'
+'C3','Forgotten',1998,800000,'G2'
+'C4','Friday Night',2003,800000,'G3'
+'C5','Hot As Hell',2003,750000,'G3'
+'C6','Golden Hits',1998,400000,'G4'
+'C7','Broken',2003,600000,'G4'
+'C8','Golden Road',2003,800000,'G4'
+'C9','Function',2003,100000,'G4'
+'C10','Be Here',2003,790000,'G5'
+'C11','Ranch',2003,450000,'G2'
+'C12','Horse of a Different Color',2001,900000,'G5'
+'C13','Rain',2000,450000,'G5'
+'C14','Color',2000,40000,'G1'
+'C15','Wonderful',1997,89000,'G5'
+'C16','Happy',1994,99000,'G5'
+'C17','Moon Lake',1998,25000,'G6'
+'C18','Summer Fiesta',2003,75000,'G6'
+'C19','Kettie',2001,800000,'G6'
+'C20','Celebrate',2003,790000,'G6'
+
+@availableCopy(cdCode/char,seqNum/numeric):cdCode, seqNum
+'C1',1
+'C1',2
+'C2',1
+'C2',2
+'C3',1
+'C4',1
+'C4',2
+'C5',1
+'C6',1
+'C7',1
+'C7',2
+'C8',1
+'C9',1
+'C10',1
+'C11',1
+'C12',1
+'C13',1
+'C14',1
+'C15',1
+'C16',1
+'C17',1
+'C18',1
+'C19',1
+'C20',1
+
+@rentedBy(cdCode/char,seqNum/numeric,clientID/char,fromDate/char,toDate/char,pricePerDay/numberic):cdCode, seqNum, clientID, fromDate, toDate
+'C1',1,'Client1','2005-02-05','2005-02-15',0.5
+'C1',2,'Client1','2005-09-05','2005-010-15',0.3
+'C2',1,'Client6','2005-02-05','2005-02-15',0.5
+'C2',2,'Client6','2005-03-05','2005-04-15',0.5
+'C3',1,'Client4','2005-02-05','2005-02-15',0.5
+'C4',1,'Client3','2005-03-15','2005-03-20',0.5
+'C4',2,'Client1','2005-02-05','2005-02-15',0.5
+'C5',1,'Client3','2005-02-05','2005-02-15',0.5
+'C6',1,'Client3','2005-12-05','2006-01-15',0.1
+'C7',1,'Client1','2005-12-15','2006-02-01',0.5
+'C7',2,'Client4','2005-12-20','2006-01-14',0.5
+'C8',1,'Client3','2005-12-05','2005-02-15',0.5
+'C9',1,'Client2','2005-10-05','2005-11-15',0.5
+'C10',1,'Client1','2005-10-05','2005-11-15',0.5
+'C11',1,'Client5','2005-10-05','2005-11-15',0.5
+'C12',1,'Client5','2005-10-05','2005-11-15',0.5
+'C13',1,'Client1','2005-10-05','2005-11-15',0.5
+'C14',1,'Client4','2005-10-05','2005-11-15',0.5
+'C15',1,'Client5','2005-11-05','2005-12-15',0.5
+'C16',1,'Client6','2005-11-05','2005-12-25',0.4
+'C17',1,'Client4','2005-11-05','2005-12-15',0.5
+'C18',1,'Client5','2005-11-05','2005-12-15',0.5
+'C19',1,'Client6','2005-11-05','2005-12-15',0.5
+'C20',1,'Client2','2005-11-05','2005-12-15',0.5
+
+@song(songCode/char,songTitle/char):songCode
+'S1','Sweet Dreams'
+'S2','Goodnight'
+'S3','My Lullaby'
+'S4','I Have A Dream'
+'S5','Forgotten'
+'S6','How Could You'
+'S7','Breathless'
+'S8','My Oh My'
+'S9','Ooh La La'
+'S10','Fire'
+'S11','Hot As Hell'
+'S12','Goldilocks'
+'S13','One Of Us'
+'S14','Mamma Mia'
+'S15','Broken'
+'S16','Life Or Death'
+'S17','Days Go By'
+'S18','Another Day in Paradise'
+'S19','Fire'
+'S20','Goodnight'
+
+@composedOf(cdCode/char,songCode/char,trackNumber/numeric):cdCode, songCode
+'C1','S1',1
+'C1','S2',2
+'C1','S3',3
+'C1','S19',4
+'C2','S4',1
+'C3','S5',1
+'C3','S6',2
+'C4','S7',1
+'C4','S8',2
+'C4','S9',3
+'C5','S10',1
+'C5','S11',2
+'C6','S12',1
+'C6','S13',2
+'C6','S14',3
+'C7','S15',1
+'C7','S16',2
+'C7','S20',23
+'C8','S17',1
+'C8','S18',2
+'C8','S1',3
+'C8','S2',4
+'C8','S7',5
+'C9','S18',1
+'C10','S1',1
+'C11','S2',1
+'C12','S3',1
+'C13','S4',2
+'C14','S5',7
+'C15','S6',1
+'C16','S8',2
+'C17','S9',1
+'C18','S10',2
+'C19','S11',3
+'C20','S14',2
+
+@writtenBy(songCode/char,artistID/char):songCode, artistID
+'S1','A1'
+'S2','A1'
+'S3','A12'
+'S4','A3'
+'S5','A1'
+'S5','A2'
+'S6','A2'
+'S7','A6'
+'S8','A7'
+'S9','A7'
+'S10','A8'
+'S11','A3'
+'S12','A8'
+'S13','A8'
+'S14','A8'
+'S15','A8'
+'S16','A9'
+'S17','A4'
+'S18','A10'
+
+@topCDs(cdCode/char,year/numeric,rating/numeric):cdCode, year
+'C1',2001,2
+'C2',1990,1
+'C3',1998,6
+'C4',2003,3
+'C5',2003,9
+'C6',1998,1
+'C7',2003,2
+'C8',2003,1
+'C9',2003,5
+'C10',2003,4
+'C11',2003,11
+'C12',2001,1
+'C13',2000,15
+
+@topSongs(songCode/char,year/numeric,rating/numeric):songCode, year
+'S1',1987,5
+'S2',1987,1
+'S4',1990,1
+'S5',1998,3
+'S6',1998,5
+'S8',2000,4
+'S10',1993,2
+'S11',1993,13
+'S12',1998,1
+'S14',1998,4
+'S15',1999,1
+'S16',1999,3
+'S17',2003,1
+'S18',2003,12
+
