@@ -73,11 +73,40 @@ answer2 :=
 %---------------------------------%
 %           Problem 3             %
 %---------------------------------%
+% List songs in CDs that were 
+% rented by clients who live in 
+% ‘Los Angeles’ and (CDs)
+% were published in 1998.
+% (attributes to retrieve: songTitle, 
+% clientID, firstName, lastName)
+qCDsFrom1998 :=
+	project cdCode (select year=1998 (cd));
+
+qSongsFromCDsFrom1998 :=
+	composedOf njoin qCDsFrom1998;
+
+qSongTitlesFromCDsFrom1998 :=
+	project cdCode, songTitle (song njoin qSongsFromCDsFrom1998);
+
+qSongTitlesFrom1998RentedBy :=
+	project clientID, songTitle (rentedBy njoin qSongTitlesFromCDsFrom1998);
+
+qClientsWhoLiveInLA :=
+	select address='Los Angeles' (client);
+
+answer3 :=
+	project clientID, firstName, lastName, songTitle (qClientsWhoLiveInLA njoin qSongTitlesFrom1998RentedBy);
 
 %---------------------------------%
 %           Problem 4             %
 %---------------------------------%
-
+% List artists who have been 
+% a member of only one group.
+% (attributes to retrieve: artistID, firstName, lastName)
 %---------------------------------%
 %           Problem 5             %
 %---------------------------------%
+% List CDs whose musical group 
+% has at least one member who 
+% was born after 1970 (1970 is inclusive)
+% (attributes to retrieve: cdCode, groupCode, groupName)
