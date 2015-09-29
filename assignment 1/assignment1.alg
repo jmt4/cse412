@@ -58,17 +58,17 @@ qSongs1990AndAfter :=
 qSongsBetween1990And2000 :=
 	select year <= 2000 (qSongs1990AndAfter);
 
-qSongsInTimeFrameWRating3OrAbove :=
-	project songCode (select  rating <=3 (qSongsBetween1990And2000));
+qSongsInTimeFrameWRating3 :=
+	project songCode (select  rating =3 (qSongsBetween1990And2000));
 
-qSongsWrittenBy :=
-	writtenBy njoin (qSongsInTimeFrameWRating3OrAbove njoin song);
+qSongsComposedBy :=
+	composedOf njoin (qSongsInTimeFrameWRating3 njoin song);
 
-qMemberWroteSong :=
-	qSongsWrittenBy njoin member;
+qSongsOnCD :=
+	qSongsComposedBy njoin cd;
 
 answer2 :=
-	project songTitle, groupCode, groupName (qMemberWroteSong njoin musicalGroup);
+	project songTitle, groupCode, groupName (qSongsOnCD njoin musicalGroup);
 
 %---------------------------------%
 %           Problem 3             %
@@ -103,6 +103,14 @@ answer3 :=
 % List artists who have been 
 % a member of only one group.
 % (attributes to retrieve: artistID, firstName, lastName)
+qMember:=
+	project artistID, groupCode (member);
+
+qRenameMember(aid, gid) :=
+	project artistID, groupCode (member);
+
+qTest := 
+	select groupCode <> gid and artistID = aid (qMember njoin qRenameMember);
 %---------------------------------%
 %           Problem 5             %
 %---------------------------------%
